@@ -161,6 +161,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Jimmyjs\ReportGenerator\ServiceProvider::class,
+        Barryvdh\Snappy\ServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -228,6 +230,8 @@ return [
         'PdfReport' => Jimmyjs\ReportGenerator\Facades\PdfReportFacade::class,
         'ExcelReport' => Jimmyjs\ReportGenerator\Facades\ExcelReportFacade::class,
         'CSVReport' => Jimmyjs\ReportGenerator\Facades\CSVReportFacade::class,
+        'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
+        'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
 
     ],
 
