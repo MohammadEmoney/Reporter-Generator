@@ -1,8 +1,6 @@
 <div align="center">Report Generator Test</div>
 <div>
-    
-<h1>This repo Ready Reporter To Use</h1>
-<small><a href="https://github.com/Jimmy-JS/laravel-report-generator">JimmyJs</a></small>
+<small align="center"><a href="https://github.com/Jimmy-JS/laravel-report-generator">JimmyJs</a></small>
 
 <hr />
 ##Repository Purpose
