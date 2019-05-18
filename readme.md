@@ -1,6 +1,7 @@
 <div align="center">Report Generator Test</div>
 <div>
 <p align="center"><small><a href="https://github.com/Jimmy-JS/laravel-report-generator">JimmyJs</a></small></p>
+<p align="center"><small><a href="https://github.com/barryvdh/laravel-snappy">JimmyJs</a></small></p>
 
 <hr />
 ##Repository Purpose
