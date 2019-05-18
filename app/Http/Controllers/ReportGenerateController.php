@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Student;
+use PDF;
 use PdfReport;
 
 class ReportGenerateController extends Controller
@@ -14,20 +15,21 @@ class ReportGenerateController extends Controller
 
 		$title = 'Student Information Report'; // Report title
 
-		$queryBuilder = Student::select(['fullname', 'country', 'detail']);
-
-		    $meta = [ // For displaying filters description on header
-		        'Registered on' => $fromDate . ' To ' . $toDate,
-		        'Sort By' => $sortBy
-		    ];
+		$students = Student::all();
 
 	    $columns = [
-	        'Student Name',
-	        'Country',
-	        'Detail'
+	        'Student Name' 	=> 	function($student) {
+        		return $student->fullname;
+	        },
+	        'Country'  		=>	function($student) {
+        		return $student->country;
+	        },
+	        'Detail'		=> 	function($student) {
+        		return $student->detail;
+	        }
 	    ];
 
-	    return PdfReport::of($title, array(), $queryBuilder, $columns)->stream();
+	    return PdfReport::of($title, array(), $students, $columns)->stream();
 
 
 	}
@@ -35,18 +37,10 @@ class ReportGenerateController extends Controller
 
 	public function showDocument() {
 
-		$snappy = App::make($this->generatePDF());
-		//To file
-		$html = '<h1>Bill</h1><p>You owe me money, dude.</p>';
-		//Or output:
-		return new Response(
-		    $snappy->getOutputFromHtml($html),
-		    200,
-		    array(
-		        'Content-Type'          => 'application/pdf',
-		        'Content-Disposition'   => 'attachment; filename="file.pdf"'
-		    )
-		);
+		$data = Student::all();
+		$pdf = PDF::loadView('myPDF', $data);
+		
+		return $pdf->download('doc.pdf');
 
 	}
 
