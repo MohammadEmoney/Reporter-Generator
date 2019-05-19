@@ -16,4 +16,4 @@ Route::get('/', function () {
 });
 
 
-Route::get("/getReport", "ReportGenerateController@generatePDF")->name('reporter');
+Route::get("/getReport", "ReportGenerateController@showDocument")->name('reporter');
